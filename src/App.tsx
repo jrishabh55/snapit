@@ -21,9 +21,6 @@ function App() {
           }
         </select>
       </div>
-      <SyntaxHighlighterComponent style={theme}>
-        {baseCode}
-      </SyntaxHighlighterComponent>
     </div>
   );
 }
