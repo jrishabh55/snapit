@@ -6,15 +6,16 @@ import { themes } from 'utils';
 import './App.scss';
 
 function App() {
-  const [theme, setTheme] = useState('atomOneDark');
-  const onSelectChange = useCallback((e) => {
+  const [theme, setTheme] = useState('material');
+
+  const onThemeChange = useCallback((e) => {
     console.log(e.currentTarget.value);
     setTheme(e.currentTarget.value);
   }, []);
   return (
     <div className="app">
       <div>
-        <select onChange={onSelectChange} value={theme}>
+        <select onChange={onThemeChange} value={theme}>
           {
             themes.map(theme => <option key={theme.id} value={theme.id}>{theme.name}</option>)
           }
