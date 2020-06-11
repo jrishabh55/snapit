@@ -1,6 +1,3 @@
-import capitalize from 'lodash/capitalize';
-import * as hljsThemes from 'react-syntax-highlighter/dist/esm/styles/hljs';
-
 export const baseCode = `const pluckDeep = key => obj => key.split('.').reduce((accum, key) => accum[key], obj)
 
 const compose = (...fns) => res => fns.reduce((accum, next) => next(accum), res)
