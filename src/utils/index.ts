@@ -14,43 +14,42 @@ const unfold = (f, seed) => {
 }
 `;
 
-
-export const themes: { id: string, name: string }[] = [
+export const themes: { id: string; name: string }[] = [
   {
     id: 'material',
-    name: 'Material'
+    name: 'Material',
   },
   {
     id: 'material-darker',
-    name: 'Material Darker'
+    name: 'Material Darker',
   },
   {
     id: 'material-ocean',
-    name: 'Material Ocean'
+    name: 'Material Ocean',
   },
   {
     id: 'material-palenight',
-    name: 'Material Palenight'
+    name: 'Material Palenight',
   },
   {
     id: 'solarized',
-    name: 'Solarized'
+    name: 'Solarized',
   },
   {
     id: 'cobalt',
-    name: 'Cobalt'
+    name: 'Cobalt',
   },
   {
     id: 'darcula',
-    name: 'Darcula'
+    name: 'Darcula',
   },
   {
     id: 'dracula',
-    name: 'Dracula'
+    name: 'Dracula',
   },
   {
     id: 'twilight',
-    name: 'Twilight'
+    name: 'Twilight',
   },
 ];
 
