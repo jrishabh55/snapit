@@ -13,6 +13,14 @@ const unfold = (f, seed) => {
 
 export const themes: { id: string; name: string }[] = [
   {
+    id: 'duotone-dark',
+    name: 'Duotone Dark',
+  },
+  {
+    id: 'duotone-light',
+    name: 'Duotone Light',
+  },
+  {
     id: 'material',
     name: 'Material',
   },
