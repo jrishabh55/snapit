@@ -29,7 +29,7 @@ function App() {
         </select>
         <select onChange={onModeChange} value={theme}>
           {
-            LANGUAGES.map(language => <option key={language.mode} value={language.mode}>{language.name}</option>)
+            LANGUAGES.map(language => <option key={language.id} value={language.mode}>{language.name}</option>)
           }
         </select>
       </div>
