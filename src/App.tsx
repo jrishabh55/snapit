@@ -1,24 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useCallback, useState } from 'react';
+import SyntaxHighlighterComponent from './components/SyntaxHighlighter';
+
+import { baseCode, themes } from 'utills';
+
 import './App.scss';
 
 function App() {
+  const [theme, setTheme] = useState('atomOneDark');
+  const onSelectChange = useCallback((e) => {
+    console.log(e.currentTarget.value);
+    setTheme(e.currentTarget.value);
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <div>
+        <select onChange={onSelectChange} value={theme}>
+          {
+            themes.map(theme => <option key={theme.value} value={theme.value}>{theme.name}</option>)
+          }
+        </select>
+      </div>
+      <SyntaxHighlighterComponent style={theme}>
+        {baseCode}
+      </SyntaxHighlighterComponent>
     </div>
   );
 }
