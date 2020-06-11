@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import SyntaxHighlighterComponent from './components/SyntaxHighlighter';
 
-import { baseCode, themes } from 'utills';
+import { themes } from 'utils';
 
 import './App.scss';
 
