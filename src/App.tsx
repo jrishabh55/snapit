@@ -1,19 +1,20 @@
 import React, { useCallback, useState } from 'react';
 import CodeMirror from 'components/CodeMirror/CodeMirror';
 
-import { themes, LANGUAGES } from 'utils';
+import { themes, LANGUAGES, baseCode } from 'utils';
 
 import './App.scss';
 
 function App() {
   const [theme, setTheme] = useState('material');
+  const [mode, setMode] = useState('javascript');
+  const [code, setCode] = useState(baseCode);
 
   const onThemeChange = useCallback((e) => {
     console.log(e.currentTarget.value);
     setTheme(e.currentTarget.value);
   }, []);
 
-  const [mode, setMode] = useState('javascript');
   const onModeChange = useCallback((e) => {
     console.log(e.currentTarget.value);
     setMode(e.currentTarget.value);
@@ -27,7 +28,7 @@ function App() {
             themes.map(theme => <option key={theme.id} value={theme.id}>{theme.name}</option>)
           }
         </select>
-        <select onChange={onModeChange} value={theme}>
+        <select onChange={onModeChange} value={mode}>
           {
             LANGUAGES.map(language => <option key={language.id} value={language.mode}>{language.name}</option>)
           }
@@ -35,6 +36,10 @@ function App() {
       </div>
 
       <CodeMirror
+        value={code}
+        onBeforeChange={(editor, data, value) => {
+          setCode(value);
+        }}
         options={{
           theme,
           mode,
