@@ -16,7 +16,7 @@ function App() {
       <div>
         <select onChange={onSelectChange} value={theme}>
           {
-            themes.map(theme => <option key={theme.value} value={theme.value}>{theme.name}</option>)
+            themes.map(theme => <option key={theme.id} value={theme.id}>{theme.name}</option>)
           }
         </select>
       </div>

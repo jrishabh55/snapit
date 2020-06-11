@@ -15,4 +15,42 @@ const unfold = (f, seed) => {
 `;
 
 
-export const themes: { name: string, value: string }[] = Object.keys(hljsThemes).map(th => ({ name: capitalize(th), value: th }));
+export const themes: { id: string, name: string }[] = [
+  {
+    id: 'material',
+    name: 'Material'
+  },
+  {
+    id: 'material-darker',
+    name: 'Material Darker'
+  },
+  {
+    id: 'material-ocean',
+    name: 'Material Ocean'
+  },
+  {
+    id: 'material-palenight',
+    name: 'Material Palenight'
+  },
+  {
+    id: 'solarized',
+    name: 'Solarized'
+  },
+  {
+    id: 'cobalt',
+    name: 'Cobalt'
+  },
+  {
+    id: 'darcula',
+    name: 'Darcula'
+  },
+  {
+    id: 'dracula',
+    name: 'Dracula'
+  },
+  {
+    id: 'twilight',
+    name: 'Twilight'
+  },
+];
+
