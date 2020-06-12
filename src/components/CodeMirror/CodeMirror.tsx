@@ -1,8 +1,8 @@
 import React, { FC, useEffect, useState } from 'react';
 import { EditorConfiguration } from 'codemirror';
 import {
-  Controlled as CodeMirrorComponent,
-  IControlledCodeMirror,
+  UnControlled as CodeMirrorComponent,
+  IUnControlledCodeMirror,
 } from 'react-codemirror2';
 
 import './codemirror.scss';
@@ -23,7 +23,7 @@ const useCodeMirrorTheme = (options: EditorConfiguration) => {
   return { settingTheme };
 };
 
-const CodeMirror: FC<IControlledCodeMirror> = props => {
+const CodeMirror: FC<IUnControlledCodeMirror> = props => {
   const { options = {} } = props;
   const { settingTheme } = useCodeMirrorTheme(options);
 
