@@ -10,12 +10,10 @@ function App() {
   const [mode, setMode] = useState('javascript');
 
   const onThemeChange = useCallback((e) => {
-    console.log(e.currentTarget.value);
     setTheme(e.currentTarget.value);
   }, []);
 
   const onModeChange = useCallback((e) => {
-    console.log(e.currentTarget.value);
     setMode(e.currentTarget.value);
   }, []);
 
@@ -23,14 +21,18 @@ function App() {
     <div className="app">
       <div>
         <select onChange={onThemeChange} value={theme}>
-          {
-            themes.map(theme => <option key={theme.id} value={theme.id}>{theme.name}</option>)
-          }
+          {themes.map(($theme) => (
+            <option key={$theme.id} value={$theme.id}>
+              {$theme.name}
+            </option>
+          ))}
         </select>
         <select onChange={onModeChange} value={mode}>
-          {
-            LANGUAGES.map(language => <option key={language.id} value={language.mode}>{language.name}</option>)
-          }
+          {LANGUAGES.map((language) => (
+            <option key={language.id} value={language.mode}>
+              {language.name}
+            </option>
+          ))}
         </select>
       </div>
 
@@ -40,7 +42,7 @@ function App() {
           theme,
           mode,
           lineNumbers: true,
-          autofocus: true
+          autofocus: true,
         }}
       />
     </div>
