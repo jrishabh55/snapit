@@ -10,5 +10,9 @@
         "alwaysTryTypes": true
       }
     }
+  },
+  "rules": {
+    "react/jsx-props-no-spreading": "off",
+    "@typescript-eslint/no-explicit-any": "off"
   }
 }
