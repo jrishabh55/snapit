@@ -7,15 +7,11 @@ import {
 
 import './codemirror.scss';
 
-
 const useCodeMirrorTheme = (options: EditorConfiguration) => {
   const [settingTheme, setSettingTheme] = useState(true);
   useEffect(() => {
     setSettingTheme(true);
-    Promise.all([
-      import(`codemirror/mode/${options.mode}/${options.mode}`),
-      import(`codemirror/theme/${options.theme}.css`),
-    ]).then(() => {
+    import(`codemirror/theme/${options.theme}.css`).then(() => {
       setSettingTheme(false);
     });
   }, [options]);
@@ -23,17 +19,28 @@ const useCodeMirrorTheme = (options: EditorConfiguration) => {
   return { settingTheme };
 };
 
-const CodeMirror: FC<IUnControlledCodeMirror> = props => {
+const useCodeMirrorMode = (options: EditorConfiguration) => {
+  const [isSettingMode, setIsSettingMode] = useState(true);
+  useEffect(() => {
+    setIsSettingMode(true);
+    import(`codemirror/mode/${options.mode}/${options.mode}`).then(() => {
+      setIsSettingMode(false);
+    });
+  }, [options]);
+
+  return { isSettingMode };
+};
+
+const CodeMirror: FC<IUnControlledCodeMirror> = (props) => {
   const { options = {} } = props;
   const { settingTheme } = useCodeMirrorTheme(options);
+  const { isSettingMode } = useCodeMirrorMode(options);
 
-  if (settingTheme) {
+  if (settingTheme || isSettingMode) {
     return null;
   }
 
-  return (
-      <CodeMirrorComponent {...props} />
-  );
+  return <CodeMirrorComponent {...props} />;
 };
 
 export default CodeMirror;
