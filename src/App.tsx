@@ -8,7 +8,6 @@ import './App.scss';
 function App() {
   const [theme, setTheme] = useState('material');
   const [mode, setMode] = useState('javascript');
-  const [code, setCode] = useState(baseCode);
 
   const onThemeChange = useCallback((e) => {
     console.log(e.currentTarget.value);
@@ -36,14 +35,12 @@ function App() {
       </div>
 
       <CodeMirror
-        value={code}
-        onBeforeChange={(editor, data, value) => {
-          setCode(value);
-        }}
+        value={baseCode}
         options={{
           theme,
           mode,
           lineNumbers: true,
+          autofocus: true
         }}
       />
     </div>
