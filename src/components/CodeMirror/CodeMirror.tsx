@@ -8,15 +8,15 @@ import {
 import './codemirror.scss';
 
 const useCodeMirrorTheme = (options: EditorConfiguration) => {
-  const [settingTheme, setSettingTheme] = useState(true);
+  const [isSettingTheme, setIsSettingTheme] = useState(true);
   useEffect(() => {
-    setSettingTheme(true);
+    setIsSettingTheme(true);
     import(`codemirror/theme/${options.theme}.css`).then(() => {
-      setSettingTheme(false);
+      setIsSettingTheme(false);
     });
   }, [options]);
 
-  return { settingTheme };
+  return { isSettingTheme };
 };
 
 const useCodeMirrorMode = (options: EditorConfiguration) => {
@@ -33,10 +33,10 @@ const useCodeMirrorMode = (options: EditorConfiguration) => {
 
 const CodeMirror: FC<IUnControlledCodeMirror> = (props) => {
   const { options = {} } = props;
-  const { settingTheme } = useCodeMirrorTheme(options);
+  const { isSettingTheme } = useCodeMirrorTheme(options);
   const { isSettingMode } = useCodeMirrorMode(options);
 
-  if (settingTheme || isSettingMode) {
+  if (isSettingTheme || isSettingMode) {
     return null;
   }
 
