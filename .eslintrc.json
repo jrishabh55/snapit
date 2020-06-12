@@ -1,0 +1,14 @@
+{
+  "extends": ["airbnb-typescript-prettier"],
+  "plugins": ["jest"],
+  "env": {
+    "jest": true
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true
+      }
+    }
+  }
+}
