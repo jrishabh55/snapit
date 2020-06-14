@@ -3,6 +3,7 @@ import CodeMirror from 'components/CodeMirror/CodeMirror';
 
 import { themes, LANGUAGES, baseCode } from 'utils';
 
+import './assets/main.css';
 import './App.scss';
 
 function App() {
