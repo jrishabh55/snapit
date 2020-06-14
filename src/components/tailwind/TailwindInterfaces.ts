@@ -1,6 +1,6 @@
 export type SizeTypes = 'xl' | 'sm' | 'md' | 'lg' | '2xl';
 
-export type ShadowType = SizeTypes | 'inner' | 'outline' | 'none';
+export type ShadowType = SizeTypes | 'inner' | 'outline' | 'none' | 'normal';
 
 export type DisplayTypes =
   | 'flex'
