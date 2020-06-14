@@ -11,6 +11,7 @@ interface ButtonProps {
   py?: number;
   className?: string;
   shadowType?: ShadowType;
+  border?: boolean;
 }
 
 const Button: FC<ButtonProps> = ({
@@ -22,12 +23,13 @@ const Button: FC<ButtonProps> = ({
   bold = true,
   px = 4,
   py = 2,
-  shadowType = 'none',
+  shadowType = '',
   children,
+  border,
 }) => {
   const classes = useMemo(() => {
     const arr: string[] = [
-      `shadow-${shadowType}`,
+      'focus:outline-none focus:shadow-outline leading-tight',
       `bg-${bgColor}-500`,
       `hover:bg-${bgColor}-700`,
       `text-${textColor}`,
@@ -37,9 +39,21 @@ const Button: FC<ButtonProps> = ({
     if (className) arr.push(className);
     if (rounded) arr.push(`rounded`);
     if (bold) arr.push(`font-bold`);
+    if (border) arr.push('border border-gray-400 hover:border-gray-500');
+    if (shadowType) arr.push(`shadow-${shadowType}`);
 
     return arr.join(' ');
-  }, [className, bgColor, shadowType, px, py, bold, rounded, textColor]);
+  }, [
+    className,
+    bgColor,
+    shadowType,
+    px,
+    py,
+    bold,
+    rounded,
+    textColor,
+    border,
+  ]);
 
   return (
     <button type="button" className={classes} onClick={onClick}>
