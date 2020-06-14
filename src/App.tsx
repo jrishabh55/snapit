@@ -1,10 +1,20 @@
-import React, { useCallback, useState, MouseEvent } from 'react';
+import React, {
+  useCallback,
+  useState,
+  useMemo,
+  MouseEvent,
+  ChangeEvent,
+} from 'react';
 import domToImage from 'dom-to-image';
 import { saveAs } from 'file-saver';
 
 import CodeMirror from 'components/CodeMirror/CodeMirror';
 
 import { themes, LANGUAGES, baseCode } from 'utils';
+import Layout from 'components/Layout/Layout';
+import Box from 'components/tailwind/Box/Box';
+import Button from 'components/tailwind/Button';
+import Select from 'components/tailwind/Select';
 
 import './assets/main.css';
 import './App.scss';
@@ -13,11 +23,11 @@ function App() {
   const [theme, setTheme] = useState('material');
   const [mode, setMode] = useState('javascript');
 
-  const onThemeChange = useCallback((e) => {
+  const onThemeChange = useCallback((e: ChangeEvent<HTMLSelectElement>) => {
     setTheme(e.currentTarget.value);
   }, []);
 
-  const onModeChange = useCallback((e) => {
+  const onModeChange = useCallback((e: ChangeEvent<HTMLSelectElement>) => {
     setMode(e.currentTarget.value);
   }, []);
 
@@ -31,37 +41,54 @@ function App() {
     }
   }, []);
 
+  const themeOption = useMemo(
+    () => themes.map(($theme) => ({ name: $theme.name, value: $theme.id })),
+    []
+  );
+
+  const modeOption = useMemo(
+    () =>
+      LANGUAGES.map(($language) => ({
+        name: $language.name,
+        value: $language.mode,
+        id: $language.id,
+      })),
+    []
+  );
+
   return (
     <div className="app">
-      <div>
-        <select onChange={onThemeChange} value={theme}>
-          {themes.map(($theme) => (
-            <option key={$theme.id} value={$theme.id}>
-              {$theme.name}
-            </option>
-          ))}
-        </select>
-        <select onChange={onModeChange} value={mode}>
-          {LANGUAGES.map((language) => (
-            <option key={language.id} value={language.mode}>
-              {language.name}
-            </option>
-          ))}
-        </select>
-        <button type="button" onClick={onSnapIt}>
-          Snap IT
-        </button>
-      </div>
-
-      <CodeMirror
-        value={baseCode}
-        options={{
-          theme,
-          mode,
-          lineNumbers: true,
-          autofocus: true,
-        }}
-      />
+      <Layout>
+        <Box className="max-w-screen-md mx-auto">
+          <Select
+            options={themeOption}
+            value={theme}
+            onChange={onThemeChange}
+          />
+          <Select options={modeOption} value={theme} onChange={onModeChange} />
+          <Button
+            bgColor="white"
+            textColor="blue-500"
+            shadowType="normal"
+            border
+            rounded
+            onClick={onSnapIt}
+          >
+            Snap IT
+          </Button>
+        </Box>
+        <Box className="mt-4 max-w-screen-md mx-auto">
+          <CodeMirror
+            value={baseCode}
+            options={{
+              theme,
+              mode,
+              lineNumbers: true,
+              autofocus: true,
+            }}
+          />
+        </Box>
+      </Layout>
     </div>
   );
 }
