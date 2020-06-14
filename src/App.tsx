@@ -1,4 +1,7 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, MouseEvent } from 'react';
+import domToImage from 'dom-to-image';
+import { saveAs } from 'file-saver';
+
 import CodeMirror from 'components/CodeMirror/CodeMirror';
 
 import { themes, LANGUAGES, baseCode } from 'utils';
@@ -18,6 +21,16 @@ function App() {
     setMode(e.currentTarget.value);
   }, []);
 
+  const onSnapIt = useCallback((e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    const el = document.querySelector('.react-codemirror2');
+    if (el) {
+      domToImage.toBlob(el).then((blob) => {
+        saveAs(blob, 'capture.png');
+      });
+    }
+  }, []);
+
   return (
     <div className="app">
       <div>
@@ -35,6 +48,9 @@ function App() {
             </option>
           ))}
         </select>
+        <button type="button" onClick={onSnapIt}>
+          Snap IT
+        </button>
       </div>
 
       <CodeMirror
