@@ -65,7 +65,7 @@ function App() {
             value={theme}
             onChange={onThemeChange}
           />
-          <Select options={modeOption} value={theme} onChange={onModeChange} />
+          <Select options={modeOption} value={mode} onChange={onModeChange} />
           <Button
             bgColor="white"
             textColor="blue-500"
