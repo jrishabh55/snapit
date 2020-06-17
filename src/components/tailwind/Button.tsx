@@ -43,17 +43,7 @@ const Button: FC<ButtonProps> = ({
     if (shadowType) arr.push(`shadow-${shadowType}`);
 
     return arr.join(' ');
-  }, [
-    className,
-    bgColor,
-    shadowType,
-    px,
-    py,
-    bold,
-    rounded,
-    textColor,
-    border,
-  ]);
+  }, [className, bgColor, shadowType, px, py, bold, rounded, textColor, border]);
 
   return (
     <button type="button" className={classes} onClick={onClick}>

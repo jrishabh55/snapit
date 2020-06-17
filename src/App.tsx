@@ -1,13 +1,8 @@
-import React, {
-  useCallback,
-  useState,
-  useMemo,
-  MouseEvent,
-  ChangeEvent,
-} from 'react';
+import React, { useCallback, useState, useMemo, MouseEvent, ChangeEvent } from 'react';
 import domToImage from 'dom-to-image';
 import { saveAs } from 'file-saver';
 
+import CodeWrapper from 'components/CodeWrapper';
 import CodeMirror from 'components/CodeMirror/CodeMirror';
 
 import { themes, LANGUAGES, baseCode } from 'utils';
@@ -41,10 +36,7 @@ function App() {
     }
   }, []);
 
-  const themeOption = useMemo(
-    () => themes.map(($theme) => ({ name: $theme.name, value: $theme.id })),
-    []
-  );
+  const themeOption = useMemo(() => themes.map(($theme) => ({ name: $theme.name, value: $theme.id })), []);
 
   const modeOption = useMemo(
     () =>
@@ -60,33 +52,24 @@ function App() {
     <div className="app">
       <Layout>
         <Box className="max-w-screen-md mx-auto">
-          <Select
-            options={themeOption}
-            value={theme}
-            onChange={onThemeChange}
-          />
+          <Select options={themeOption} value={theme} onChange={onThemeChange} />
           <Select options={modeOption} value={mode} onChange={onModeChange} />
-          <Button
-            bgColor="white"
-            textColor="blue-500"
-            shadowType="normal"
-            border
-            rounded
-            onClick={onSnapIt}
-          >
+          <Button bgColor="white" textColor="blue-500" shadowType="normal" border rounded onClick={onSnapIt}>
             Snap IT
           </Button>
         </Box>
         <Box className="mt-4 max-w-screen-md mx-auto">
-          <CodeMirror
-            value={baseCode}
-            options={{
-              theme,
-              mode,
-              lineNumbers: true,
-              autofocus: true,
-            }}
-          />
+          <CodeWrapper>
+            <CodeMirror
+              value={baseCode}
+              options={{
+                theme,
+                mode,
+                lineNumbers: true,
+                autofocus: true,
+              }}
+            />
+          </CodeWrapper>
         </Box>
       </Layout>
     </div>

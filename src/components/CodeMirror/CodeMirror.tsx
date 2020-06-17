@@ -1,9 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import { EditorConfiguration } from 'codemirror';
-import {
-  UnControlled as CodeMirrorComponent,
-  IUnControlledCodeMirror,
-} from 'react-codemirror2';
+import { UnControlled as CodeMirrorComponent, IUnControlledCodeMirror } from 'react-codemirror2';
 
 import './codemirror.scss';
 
