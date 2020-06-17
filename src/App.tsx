@@ -33,7 +33,7 @@ function App() {
 
   const onSnapIt = useCallback((e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    const el = document.querySelector('.react-codemirror2');
+    const el = document.querySelector('#codeation-code-wrapper');
     if (el) {
       domToImage.toBlob(el).then((blob) => {
         saveAs(blob, 'capture.png');

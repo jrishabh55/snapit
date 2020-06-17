@@ -1,15 +1,26 @@
-import React, { FC } from 'react';
+import React, { FC, useMemo } from 'react';
 import Box from './tailwind/Box/Box';
 
 interface CodeWrapperProps {
-  enable: boolean;
+  enable?: boolean;
+  bgColor?: string;
 }
 
-const CodeWrapper: FC<CodeWrapperProps> = ({ children, enable = true }) => {
+const CodeWrapper: FC<CodeWrapperProps> = ({ children, enable = true, bgColor = 'rgb(76, 165, 242)' }) => {
+  const styles = useMemo(
+    () => ({
+      background: `0% 0% / auto repeat ${bgColor}`,
+    }),
+    [bgColor]
+  );
   if (!enable) {
     return <>{children}</>;
   }
-  return <Box className="p-4">{children}</Box>;
+  return (
+    <Box style={styles} rounded="md" className="p-12" id="codeation-code-wrapper">
+      {children}
+    </Box>
+  );
 };
 
 export default CodeWrapper;
