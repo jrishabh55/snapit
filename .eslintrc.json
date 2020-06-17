@@ -1,5 +1,5 @@
 {
-  "extends": ["airbnb-typescript-prettier"],
+  "extends": ["react-app", "airbnb-typescript-prettier"],
   "plugins": ["jest"],
   "env": {
     "jest": true
