@@ -14355,6 +14355,10 @@ video {
   transition-delay: 1000ms;
 }
 
+.CodeMirror {
+  border-radius: 0.375rem;
+}
+
 @media (min-width: 640px) {
   .sm\:space-y-0 > :not(template) ~ :not(template) {
     --space-y-reverse: 0;
