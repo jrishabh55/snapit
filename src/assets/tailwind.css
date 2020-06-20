@@ -6,6 +6,7 @@
 
 .CodeMirror {
   @apply rounded-md;
+  @apply rounded-t-none;
   @apply py-4;
   @apply px-2;
 }
