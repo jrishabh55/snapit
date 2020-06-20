@@ -5,7 +5,7 @@ interface BoxProps extends HTMLAttributes<HTMLDivElement> {
   className?: string;
   display?: DisplayTypes;
   shadowType?: ShadowType;
-  children: ReactNode;
+  children?: ReactNode;
   style?: CSSProperties;
   rounded?: BorderTypes;
 }
