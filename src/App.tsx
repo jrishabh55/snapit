@@ -5,7 +5,8 @@ import { saveAs } from 'file-saver';
 import CodeWrapper from 'components/CodeWrapper';
 import CodeMirror from 'components/CodeMirror/CodeMirror';
 
-import { themes, LANGUAGES, baseCode } from 'utils';
+import { themes, baseCode } from 'utils';
+import { modes } from 'utils/modes';
 import Layout from 'components/Layout/Layout';
 import Box from 'components/tailwind/Box/Box';
 import Button from 'components/tailwind/Button';
@@ -40,7 +41,7 @@ function App() {
 
   const modeOption = useMemo(
     () =>
-      LANGUAGES.map(($language) => ({
+      modes.map(($language) => ({
         name: $language.name,
         value: $language.mode,
         id: $language.id,
