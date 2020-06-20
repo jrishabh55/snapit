@@ -1,14 +1,12 @@
-export const baseCode = `const pluckDeep = key => obj => key.split('.').reduce((accum, key) => accum[key], obj)
-
-const compose = (...fns) => res => fns.reduce((accum, next) => next(accum), res)
-
-const unfold = (f, seed) => {
-  const go = (f, seed, acc) => {
-    const res = f(seed)
-    return res ? go(f, res[1], acc.concat([res[0]])) : acc
+export const baseCode = `function validateEmail(email) {
+  if (/^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/.test(email)) {
+    return true;
   }
-  return go(f, seed, [])
+  alert('Invalid e-mail address! Please enter again carefully!.');
+  return false;
 }
+
+validateEmail('rishabh@codeation.io');
 `;
 
 export const themes: { id: string; name: string }[] = [
