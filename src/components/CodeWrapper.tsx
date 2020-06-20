@@ -1,5 +1,6 @@
 import React, { FC, useMemo } from 'react';
 import Box from './tailwind/Box/Box';
+import MacWrapper from './MacWrapper/MacWrapper';
 
 interface CodeWrapperProps {
   enable?: boolean;
@@ -18,7 +19,7 @@ const CodeWrapper: FC<CodeWrapperProps> = ({ children, enable = true, bgColor = 
   }
   return (
     <Box style={styles} rounded="md" className="p-12" id="codeation-code-wrapper">
-      {children}
+      <MacWrapper>{children}</MacWrapper>
     </Box>
   );
 };
