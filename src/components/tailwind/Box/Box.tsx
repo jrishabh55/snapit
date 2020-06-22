@@ -13,8 +13,7 @@ interface BoxProps extends HTMLAttributes<HTMLDivElement> {
 const Box: FC<BoxProps> = memo(
   ({ children, rounded = 'none', className, display = 'flex', shadowType = 'none', ...restProps }) => {
     const classes = useMemo(() => {
-      const arr: string[] = [display, `shadow-${shadowType}`];
-      if (rounded) arr.push(`rounded-${rounded}`);
+      const arr: string[] = [display, `shadow-${shadowType}`, `rounded-${rounded}`];
       if (className) arr.push(className);
 
       return arr.join(' ');
