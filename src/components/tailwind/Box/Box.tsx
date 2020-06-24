@@ -1,4 +1,4 @@
-import React, { ReactNode, CSSProperties, HTMLAttributes, FC, memo, useMemo } from 'react';
+import { ReactNode, CSSProperties, HTMLAttributes, FC, memo, useMemo, createElement, ReactHTML } from 'react';
 import { ShadowType, DisplayTypes, BorderTypes } from '../TailwindInterfaces';
 
 interface BoxProps extends HTMLAttributes<HTMLDivElement> {
@@ -8,10 +8,19 @@ interface BoxProps extends HTMLAttributes<HTMLDivElement> {
   children?: ReactNode;
   style?: CSSProperties;
   rounded?: BorderTypes;
+  componentType?: keyof ReactHTML;
 }
 
 const Box: FC<BoxProps> = memo(
-  ({ children, rounded = 'none', className, display = 'flex', shadowType = 'none', ...restProps }) => {
+  ({
+    children,
+    componentType = 'div',
+    rounded = 'none',
+    className,
+    display = 'flex',
+    shadowType = 'none',
+    ...restProps
+  }) => {
     const classes = useMemo(() => {
       const arr: string[] = [display, `shadow-${shadowType}`, `rounded-${rounded}`];
       if (className) arr.push(className);
@@ -19,11 +28,11 @@ const Box: FC<BoxProps> = memo(
       return arr.join(' ');
     }, [className, display, rounded, shadowType]);
 
-    return (
-      <div className={classes} {...restProps}>
-        {children}
-      </div>
-    );
+    const BoxComponent = useMemo(() => {
+      return createElement(componentType, { className: classes, ...restProps }, children);
+    }, [componentType, classes, children, restProps]);
+
+    return BoxComponent;
   }
 );
 
