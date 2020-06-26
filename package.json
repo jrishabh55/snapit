@@ -21,9 +21,11 @@
   "scripts": {
     "deploy": "gh-pages -d build",
     "predeploy": "yarn build",
-    "start": "npm run watch:css && react-scripts start",
-    "build": "npm run build:css && react-scripts build",
+    "start": "react-scripts start",
+    "build": "yarn build:tailwind && react-scripts build",
     "build:css": "postcss src/assets/tailwind.css -o src/assets/main.css",
+    "build:tailwind": "tsc ./tailwind.config.ts && yarn build:css",
+    "watch:tailwind": "tsc ./tailwind.config.ts && yarn watch:css",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
