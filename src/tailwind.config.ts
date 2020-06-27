@@ -1,5 +1,4 @@
-// @ts-nocheck
-export default {
+const config = {
   purge: [],
   target: 'relaxed',
   prefix: '',
@@ -727,3 +726,5 @@ export default {
   corePlugins: {},
   plugins: [],
 };
+
+export default config;

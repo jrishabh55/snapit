@@ -24,14 +24,15 @@
     "predeploy": "yarn build",
     "start": "react-scripts start",
     "build": "yarn build:tailwind && react-scripts build",
+    "prebuild:css": "yarn build:tailwind",
     "build:css": "postcss src/assets/tailwind.css -o src/assets/main.css",
-    "build:tailwind": "tsc ./tailwind.config.ts && yarn build:css",
-    "watch:tailwind": "tsc ./tailwind.config.ts && yarn watch:css",
+    "build:tailwind": "tsc ./src/tailwind.config.ts",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint:fix": "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\"",
+    "prewatch:css": "yarn build:tailwind",
     "watch:css": "postcss src/assets/tailwind.css -o src/assets/main.css"
   },
   "eslintConfig": {
