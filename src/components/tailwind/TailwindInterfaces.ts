@@ -1,8 +1,14 @@
-export type BorderTypes = 'sm' | 'md' | 'lg' | 'none' | 'full' | 't-none' | 'r-none' | 'l-none' | 'b-none';
+import TailWindConfigOther from 'tailwind.config';
+
+const { theme } = TailWindConfigOther;
+
+const { borderRadius, boxShadow, fontWeight } = theme;
+
+export type BorderTypes = keyof typeof borderRadius;
 
 export type SizeTypes = 'xl' | 'sm' | 'md' | 'lg' | '2xl';
 
-export type ShadowType = SizeTypes | 'inner' | 'outline' | 'none' | 'normal';
+export type ShadowType = keyof typeof boxShadow;
 
 export type DisplayTypes =
   | 'flex'
@@ -13,3 +19,5 @@ export type DisplayTypes =
   | 'block'
   | 'table'
   | 'table-caption';
+
+export type FontTypes = keyof typeof fontWeight;
