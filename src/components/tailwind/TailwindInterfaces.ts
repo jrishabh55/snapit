@@ -20,4 +20,6 @@ export type DisplayTypes =
   | 'table'
   | 'table-caption';
 
+export type PositionType = 'static' | 'fixed' | 'absolute' | 'relative' | 'sticky';
+
 export type FontTypes = keyof typeof fontWeight;
