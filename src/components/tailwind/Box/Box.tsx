@@ -4,7 +4,7 @@ import { ShadowType, DisplayTypes, BorderTypes } from '../TailwindInterfaces';
 interface BoxProps extends HTMLAttributes<HTMLDivElement> {
   className?: string;
   display?: DisplayTypes;
-  shadowType?: ShadowType;
+  shadow?: ShadowType;
   children?: ReactNode;
   style?: CSSProperties;
   rounded?: BorderTypes;
@@ -18,15 +18,15 @@ const Box: FC<BoxProps> = memo(
     rounded = 'none',
     className,
     display = 'flex',
-    shadowType = 'none',
+    shadow = 'none',
     ...restProps
   }) => {
     const classes = useMemo(() => {
-      const arr: string[] = [display, `shadow-${shadowType}`, `rounded-${rounded}`];
+      const arr: string[] = [display, `shadow-${shadow}`, `rounded-${rounded}`];
       if (className) arr.push(className);
 
       return arr.join(' ');
-    }, [className, display, rounded, shadowType]);
+    }, [className, display, rounded, shadow]);
 
     const BoxComponent = useMemo(() => {
       return createElement(componentType, { className: classes, ...restProps }, children);
