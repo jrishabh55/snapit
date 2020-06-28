@@ -4,11 +4,11 @@ const { theme } = TailWindConfigOther;
 
 const { borderRadius, boxShadow, fontWeight } = theme;
 
-export type BorderTypes = keyof typeof borderRadius;
+export type BorderTypes = keyof typeof borderRadius | boolean;
 
 export type SizeTypes = 'xl' | 'sm' | 'md' | 'lg' | '2xl';
 
-export type ShadowType = keyof typeof boxShadow;
+export type ShadowType = keyof typeof boxShadow | boolean;
 
 export type DisplayTypes =
   | 'flex'
