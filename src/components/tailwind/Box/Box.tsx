@@ -1,14 +1,14 @@
-import { ReactNode, CSSProperties, HTMLAttributes, FC, memo, useMemo, createElement, ReactHTML } from 'react';
+import { ReactNode, CSSProperties, AllHTMLAttributes, FC, memo, useMemo, createElement, ReactHTML } from 'react';
 import { ShadowType, DisplayTypes, BorderTypes, PositionType } from '../TailwindInterfaces';
 
-interface BoxProps extends HTMLAttributes<HTMLDivElement> {
+interface BoxProps<T extends HTMLElement = HTMLElement> extends AllHTMLAttributes<T> {
   className?: string;
   display?: DisplayTypes;
-  shadow?: ShadowType;
+  shadow?: ShadowType | boolean;
   position?: PositionType;
   children?: ReactNode;
   style?: CSSProperties;
-  rounded?: BorderTypes;
+  rounded?: BorderTypes | boolean;
   componentType?: keyof ReactHTML;
 }
 
@@ -16,17 +16,25 @@ const Box: FC<BoxProps> = memo(
   ({
     children,
     componentType = 'div',
-    rounded = 'none',
+    rounded = false,
     className,
     display = 'flex',
-    shadow = 'none',
+    shadow = false,
     position,
     ...restProps
   }) => {
     const classes = useMemo(() => {
-      const arr: string[] = [display, `shadow-${shadow}`, `rounded-${rounded}`];
+      const arr: string[] = [display];
       if (className) arr.push(className);
       if (position) arr.push(position);
+      if (shadow) {
+        if (typeof shadow === 'string') arr.push(`shadow-${shadow}`);
+        else arr.push(`shadow`);
+      }
+      if (rounded) {
+        if (typeof rounded === 'string') arr.push(`rounded-${rounded}`);
+        else arr.push(`rounded`);
+      }
 
       return arr.join(' ');
     }, [className, display, rounded, shadow, position]);
