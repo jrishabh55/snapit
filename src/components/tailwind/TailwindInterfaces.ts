@@ -2,9 +2,13 @@ import TailWindConfigOther from 'tailwind.config';
 
 const { theme } = TailWindConfigOther;
 
-const { borderRadius, boxShadow, fontWeight } = theme;
+const { borderRadius, borderWidth, boxShadow, fontWeight } = theme;
 
-export type BorderTypes = keyof typeof borderRadius | boolean;
+export type LocationIdentifiers = 'l' | 'r' | 't' | 'b';
+
+export type BorderRadiusTypes = keyof typeof borderRadius | boolean;
+
+export type BorderTypes = keyof typeof borderWidth | boolean | LocationIdentifiers | 'l-0' | 'r-0' | 't-0' | 'b-0';
 
 export type SizeTypes = 'xl' | 'sm' | 'md' | 'lg' | '2xl';
 

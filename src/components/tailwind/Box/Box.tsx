@@ -1,5 +1,5 @@
 import { ReactNode, CSSProperties, AllHTMLAttributes, FC, memo, useMemo, createElement, ReactHTML } from 'react';
-import { ShadowType, DisplayTypes, BorderTypes, PositionType } from '../TailwindInterfaces';
+import { ShadowType, DisplayTypes, BorderTypes, BorderRadiusTypes, PositionType } from '../TailwindInterfaces';
 
 interface BoxProps<T extends HTMLElement = HTMLElement> extends AllHTMLAttributes<T> {
   className?: string;
@@ -8,7 +8,8 @@ interface BoxProps<T extends HTMLElement = HTMLElement> extends AllHTMLAttribute
   position?: PositionType;
   children?: ReactNode;
   style?: CSSProperties;
-  rounded?: BorderTypes | boolean;
+  rounded?: BorderRadiusTypes | boolean;
+  border?: BorderTypes | boolean;
   componentType?: keyof ReactHTML;
 }
 
@@ -20,6 +21,7 @@ const Box: FC<BoxProps> = memo(
     className,
     display = 'flex',
     shadow = false,
+    border = false,
     position,
     ...restProps
   }) => {
@@ -36,8 +38,13 @@ const Box: FC<BoxProps> = memo(
         else arr.push(`rounded`);
       }
 
+      if (border) {
+        if (typeof border === 'string') arr.push(`border-${border}`);
+        else arr.push(`border`);
+      }
+
       return arr.join(' ');
-    }, [className, display, rounded, shadow, position]);
+    }, [className, display, rounded, shadow, position, border]);
 
     const BoxComponent = useMemo(() => {
       return createElement(componentType, { className: classes, ...restProps }, children);
