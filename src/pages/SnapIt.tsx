@@ -65,6 +65,7 @@ const SnapIt = () => {
               mode,
               lineNumbers: true,
               autofocus: true,
+              lineWrapping: true,
             }}
           />
         </CodeWrapper>
