@@ -48,7 +48,7 @@ const SnapIt = () => {
 
   return (
     <>
-      <Box className="max-w-screen-md mx-auto">
+      <Box display="grid" gap="2" className="grid-flow-col max-w-screen-md justify-center mx-auto">
         <Select options={themeOption} value={theme} onChange={onThemeChange} />
         <Select options={modeOption} value={mode} onChange={onModeChange} />
         <Button bgColor="white" textColor="blue-500" shadowType="normal" border rounded onClick={onSnapIt}>
