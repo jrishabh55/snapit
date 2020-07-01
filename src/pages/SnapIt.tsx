@@ -11,6 +11,7 @@ import CodeMirror from 'components/CodeMirror/CodeMirror';
 import Box from 'components/tailwind/Box/Box';
 import Button from 'components/tailwind/Button';
 import Select from 'components/tailwind/Select';
+import Header from 'components/tailwind/Header';
 
 const SnapIt = () => {
   const [theme, setTheme] = useState('material');
@@ -48,6 +49,7 @@ const SnapIt = () => {
 
   return (
     <>
+      <Header title="SnapIT" />
       <Box display="grid" gap="2" className="grid-flow-col max-w-screen-md justify-center mx-auto">
         <Select options={themeOption} value={theme} onChange={onThemeChange} />
         <Select options={modeOption} value={mode} onChange={onModeChange} />
