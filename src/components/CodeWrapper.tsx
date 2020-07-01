@@ -18,7 +18,7 @@ const CodeWrapper: FC<CodeWrapperProps> = ({ children, enable = true, bgColor = 
     return <>{children}</>;
   }
   return (
-    <Box style={styles} rounded="md" className="p-12" id="codeation-code-wrapper">
+    <Box style={styles} rounded="md" className="p-12 w-full" id="codeation-code-wrapper">
       <MacWrapper>{children}</MacWrapper>
     </Box>
   );

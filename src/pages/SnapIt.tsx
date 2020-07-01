@@ -59,6 +59,7 @@ const SnapIt = () => {
         <CodeWrapper>
           <CodeMirror
             value={baseCode}
+            className="w-full"
             options={{
               theme,
               mode,

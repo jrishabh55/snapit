@@ -9,7 +9,7 @@ interface MacWrapperProps {
 
 const MacWrapper: FC<MacWrapperProps> = ({ children, dark = true }) => {
   return (
-    <Box display="block" shadow="normal" rounded="md" className="window bg-gray-800">
+    <Box display="block" shadow="normal" rounded="md" className="window bg-gray-800 w-full">
       <Box className="titlebar py-2 align-center">
         <Box className="buttons pl-2 align-center">
           <Box rounded="lg" className="w-3 h-3 mr-1 bg-red-600 border-red-700 hover:bg-red-700" />
