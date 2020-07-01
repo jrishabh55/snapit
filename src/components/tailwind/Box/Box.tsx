@@ -1,5 +1,6 @@
 import { ReactNode, CSSProperties, AllHTMLAttributes, FC, memo, useMemo, createElement, ReactHTML } from 'react';
 import { ShadowType, DisplayTypes, BorderTypes, BorderRadiusTypes, PositionType } from '../TailwindInterfaces';
+import { classObjToString } from '../utils';
 
 interface BoxProps<T extends HTMLElement = HTMLElement> extends AllHTMLAttributes<T> {
   className?: string;
@@ -26,24 +27,7 @@ const Box: FC<BoxProps> = memo(
     ...restProps
   }) => {
     const classes = useMemo(() => {
-      const arr: string[] = [display];
-      if (className) arr.push(className);
-      if (position) arr.push(position);
-      if (shadow) {
-        if (typeof shadow === 'string') arr.push(`shadow-${shadow}`);
-        else arr.push(`shadow`);
-      }
-      if (rounded) {
-        if (typeof rounded === 'string') arr.push(`rounded-${rounded}`);
-        else arr.push(`rounded`);
-      }
-
-      if (border) {
-        if (typeof border === 'string') arr.push(`border-${border}`);
-        else arr.push(`border`);
-      }
-
-      return arr.join(' ');
+      return classObjToString({ className, display, rounded, shadow, position, border });
     }, [className, display, rounded, shadow, position, border]);
 
     const BoxComponent = useMemo(() => {
