@@ -3,15 +3,16 @@ import Box from './Box/Box';
 
 interface HeaderProps {
   title: string;
+  className?: string;
 }
 
-const Header: FC<HeaderProps> = memo(({ title }) => {
+const Header: FC<HeaderProps> = memo(({ title, className }) => {
   return (
     <Box
       componentType="header"
       display="block"
       rounded="md"
-      className="text-4xl font-semibold text-center w-100 p-2 my-2 border-solid border-2"
+      className={`text-4xl font-semibold text-center w-100 p-2 my-2 ${className}`}
     >
       {title}
     </Box>
