@@ -13,7 +13,7 @@ const useCodeMirrorTheme = (options: EditorConfiguration) => {
     });
   }, [options]);
 
-  return { isSettingTheme };
+  return { isSettingTheme, theme: options.theme };
 };
 
 const useCodeMirrorMode = (options: EditorConfiguration) => {
@@ -25,7 +25,7 @@ const useCodeMirrorMode = (options: EditorConfiguration) => {
     });
   }, [options]);
 
-  return { isSettingMode };
+  return { isSettingMode, mode: options.mode };
 };
 
 const CodeMirror: FC<IUnControlledCodeMirror> = (props) => {
