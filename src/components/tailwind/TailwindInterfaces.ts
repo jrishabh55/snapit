@@ -12,9 +12,22 @@ export type BorderTypes = keyof typeof borderWidth | boolean | LocationIdentifie
 
 export type SizeTypes = 'xl' | 'sm' | 'md' | 'lg' | '2xl';
 
-export type GapTypes = keyof typeof spacing | boolean;
+export type SpacingTypes = keyof typeof spacing;
+
+export type GapTypes = SpacingTypes | boolean;
 
 export type ShadowType = keyof typeof boxShadow | boolean;
+
+export interface PaddingProps {
+  p: SpacingTypes;
+  x: SpacingTypes;
+  py: SpacingTypes;
+  px: SpacingTypes;
+  pt: SpacingTypes;
+  pr: SpacingTypes;
+  pb: SpacingTypes;
+  pl: SpacingTypes;
+}
 
 export type DisplayTypes =
   | 'flex'
