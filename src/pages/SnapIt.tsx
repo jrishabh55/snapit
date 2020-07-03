@@ -1,9 +1,8 @@
 import React, { useCallback, useState, useMemo, MouseEvent, ChangeEvent } from 'react';
-import domToImage from 'dom-to-image';
-import { saveAs } from 'file-saver';
 
 import { themes, baseCode } from 'utils';
 import { modes } from 'utils/modes';
+import captureDom from 'utils/captureDom';
 
 import CodeWrapper from 'components/CodeWrapper';
 import CodeMirror from 'components/CodeMirror/CodeMirror';
@@ -27,12 +26,7 @@ const SnapIt = () => {
 
   const onSnapIt = useCallback((e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    const el = document.querySelector('#codeation-code-wrapper');
-    if (el) {
-      domToImage.toBlob(el).then((blob) => {
-        saveAs(blob, 'capture.png');
-      });
-    }
+    captureDom('#codeation-code-wrapper');
   }, []);
 
   const themeOption = useMemo(() => themes.map(($theme) => ({ name: $theme.name, value: $theme.id })), []);
