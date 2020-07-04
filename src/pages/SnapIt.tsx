@@ -1,8 +1,9 @@
 import React, { useCallback, useState, useMemo, MouseEvent, ChangeEvent } from 'react';
 
 import { themes, baseCode } from 'utils';
-import { modes } from 'utils/modes';
+import { modes, ModeType } from 'utils/modes';
 import captureDom from 'utils/captureDom';
+import { useFetchContext } from 'utils/contexts';
 
 import CodeWrapper from 'components/CodeWrapper';
 import CodeMirror from 'components/CodeMirror/CodeMirror';
@@ -11,18 +12,29 @@ import Box from 'components/tailwind/Box/Box';
 import Button from 'components/tailwind/Button';
 import Select from 'components/tailwind/Select';
 import Header from 'components/tailwind/Header';
+import { DataReducerActions } from 'reducers/data.reducer';
 
 const SnapIt = () => {
-  const [theme, setTheme] = useState('material');
-  const [mode, setMode] = useState('javascript');
+  const { state, dispatch } = useFetchContext('data');
+  const [theme, setTheme] = useState(state.config.codeMirror.theme as string);
+  const [mode, setMode] = useState(state.config.codeMirror.mode);
 
-  const onThemeChange = useCallback((e: ChangeEvent<HTMLSelectElement>) => {
-    setTheme(e.currentTarget.value);
-  }, []);
+  const onThemeChange = useCallback(
+    (e: ChangeEvent<HTMLSelectElement>) => {
+      setTheme(e.currentTarget.value);
+      dispatch({ type: DataReducerActions.CODEMIRROR_THEME_UPDATE, data: { theme: e.currentTarget.value } });
+    },
+    [dispatch]
+  );
 
-  const onModeChange = useCallback((e: ChangeEvent<HTMLSelectElement>) => {
-    setMode(e.currentTarget.value);
-  }, []);
+  const onModeChange = useCallback(
+    (e: ChangeEvent<HTMLSelectElement>) => {
+      const { mode: currentMode } = modes.find((m) => m.id === parseInt(e.currentTarget.value, 10)) as ModeType;
+      setMode(e.currentTarget.value);
+      dispatch({ type: DataReducerActions.CODEMIRROR_MODE_CHANGE, data: { mode: currentMode } });
+    },
+    [dispatch]
+  );
 
   const onSnapIt = useCallback((e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -35,7 +47,7 @@ const SnapIt = () => {
     () =>
       modes.map(($language) => ({
         name: $language.name,
-        value: $language.mode,
+        value: $language.id,
         id: $language.id,
       })),
     []
@@ -53,17 +65,7 @@ const SnapIt = () => {
       </Box>
       <Box className="mt-4 max-w-screen-md mx-auto">
         <CodeWrapper>
-          <CodeMirror
-            value={baseCode}
-            className="w-full"
-            options={{
-              theme,
-              mode,
-              lineNumbers: true,
-              autofocus: true,
-              lineWrapping: true,
-            }}
-          />
+          <CodeMirror value={baseCode} className="w-full" options={state.config.codeMirror} />
         </CodeWrapper>
       </Box>
     </>
