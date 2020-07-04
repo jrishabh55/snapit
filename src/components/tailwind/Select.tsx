@@ -1,5 +1,5 @@
-import React, { FC, ChangeEvent } from 'react';
-import Box from './Box/Box';
+import React, { FC } from 'react';
+import Box, { BoxProps } from './Box/Box';
 
 interface OptionProps {
   id?: string | number;
@@ -9,10 +9,9 @@ interface OptionProps {
 
 const Option: FC<OptionProps> = ({ name, value }) => <option value={value}>{name}</option>;
 
-interface SelectProps {
+interface SelectProps extends BoxProps<HTMLSelectElement> {
   options: OptionProps[];
   value: number | string;
-  onChange: (e: ChangeEvent<HTMLSelectElement>) => void;
 }
 
 const Select: FC<SelectProps> = ({ options, value, onChange }) => {
