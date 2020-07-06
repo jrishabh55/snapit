@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
 import './MacWrapper.scss';
-import Box from 'components/tailwind/Box/Box';
+import Box from 'tailwind/Box/Box';
 
 interface MacWrapperProps {
   dark?: boolean;

@@ -1,5 +1,5 @@
 import React, { FC, memo } from 'react';
-import Box from './Box/Box';
+import Box from 'tailwind/Box/Box';
 
 interface HeaderProps {
   title: string;

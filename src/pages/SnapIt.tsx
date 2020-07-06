@@ -8,11 +8,13 @@ import { useFetchContext } from 'utils/contexts';
 import CodeWrapper from 'components/CodeWrapper';
 import CodeMirror from 'components/CodeMirror/CodeMirror';
 
-import Box from 'components/tailwind/Box/Box';
-import Button from 'components/tailwind/Button';
-import Select from 'components/tailwind/Select';
-import Header from 'components/tailwind/Header';
+import Box from 'tailwind/Box/Box';
+import Button from 'tailwind/Button';
+import Select from 'tailwind/Select';
+import Header from 'components/Header';
 import { DataReducerActions } from 'reducers/data.reducer';
+
+const id = '#codeation-code-wrapper';
 
 const SnapIt = () => {
   const { state, dispatch } = useFetchContext('data');
@@ -38,7 +40,7 @@ const SnapIt = () => {
 
   const onSnapIt = useCallback((e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    captureDom('#codeation-code-wrapper');
+    captureDom(id);
   }, []);
 
   const themeOption = useMemo(() => themes.map(($theme) => ({ name: $theme.name, value: $theme.id })), []);
@@ -64,7 +66,7 @@ const SnapIt = () => {
         </Button>
       </Box>
       <Box className="mt-4 max-w-screen-md mx-auto">
-        <CodeWrapper>
+        <CodeWrapper id={id}>
           <CodeMirror value={baseCode} className="w-full" options={state.config.codeMirror} />
         </CodeWrapper>
       </Box>

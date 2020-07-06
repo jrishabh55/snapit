@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import Box from 'components/tailwind/Box/Box';
+import Box from 'tailwind/Box/Box';
 
 const Layout: FC = ({ children }) => {
   return (
