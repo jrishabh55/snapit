@@ -15,7 +15,13 @@ const CodeWrapper: FC<CodeWrapperProps> = ({ children, enable = true, bgColor = 
     [bgColor]
   );
   if (!enable) {
-    return <>{children}</>;
+    return (
+      <>
+        <Box style={styles} rounded="md" className="p-0 w-full" id="codeation-code-wrapper">
+          {children}
+        </Box>
+      </>
+    );
   }
   return (
     <Box style={styles} rounded="md" className="p-12 w-full" id="codeation-code-wrapper">
