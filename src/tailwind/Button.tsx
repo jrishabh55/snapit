@@ -2,7 +2,7 @@ import React, { FC, useMemo } from 'react';
 import Box, { BoxProps } from './Box/Box';
 import { ShadowType } from './TailwindInterfaces';
 
-interface ButtonProps extends BoxProps<HTMLButtonElement> {
+export interface ButtonProps extends BoxProps<HTMLButtonElement> {
   bgColor?: string;
   textColor?: string;
   bold?: boolean;

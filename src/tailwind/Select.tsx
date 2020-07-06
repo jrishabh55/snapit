@@ -1,15 +1,15 @@
 import React, { FC } from 'react';
 import Box, { BoxProps } from './Box/Box';
 
-interface OptionProps {
+export interface OptionProps {
   id?: string | number;
   name: string;
   value: number | string;
 }
 
-const Option: FC<OptionProps> = ({ name, value }) => <option value={value}>{name}</option>;
+export const Option: FC<OptionProps> = ({ name, value }) => <option value={value}>{name}</option>;
 
-interface SelectProps extends BoxProps<HTMLSelectElement> {
+export interface SelectProps extends BoxProps<HTMLSelectElement> {
   options: OptionProps[];
   value: number | string;
 }

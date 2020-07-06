@@ -8,9 +8,7 @@ import { useFetchContext } from 'utils/contexts';
 import CodeWrapper from 'components/CodeWrapper';
 import CodeMirror from 'components/CodeMirror/CodeMirror';
 
-import Box from 'tailwind/Box/Box';
-import Button from 'tailwind/Button';
-import Select from 'tailwind/Select';
+import { Box, Select, Button } from 'tailwind';
 import Header from 'components/Header';
 import { DataReducerActions } from 'reducers/data.reducer';
 
