@@ -59,7 +59,7 @@ const SnapIt = () => {
       <Box display="grid" gap="2" className="grid-flow-col max-w-screen-md justify-center mx-auto">
         <Select options={themeOption} value={theme} onChange={onThemeChange} />
         <Select options={modeOption} value={mode} onChange={onModeChange} />
-        <Button bgColor="white" textColor="blue-500" shadow border rounded onClick={onSnapIt}>
+        <Button bgColor="bg-blue-300" textColor="text-white" shadow border rounded onClick={onSnapIt}>
           Snap IT
         </Button>
       </Box>

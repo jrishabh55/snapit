@@ -1,26 +1,25 @@
 import React, { FC, useMemo } from 'react';
 import Box, { BoxProps } from './Box/Box';
-import { ShadowType } from './TailwindInterfaces';
 
 export interface ButtonProps extends BoxProps<HTMLButtonElement> {
   bgColor?: string;
+  hoverBgColor?: string;
   textColor?: string;
   bold?: boolean;
   rounded?: boolean;
   className?: string;
-  shadowType?: ShadowType;
   border?: boolean;
 }
 
 const Button: FC<ButtonProps> = ({
-  bgColor = 'blue',
+  bgColor = 'bg-blue-500',
+  hoverBgColor = 'bg-blue-700',
   className,
   onClick,
-  textColor = 'white',
+  textColor = 'text-white',
   bold = true,
   px = '4',
   py = '2',
-  shadowType = '',
   children,
   border,
   ...rest
@@ -28,16 +27,16 @@ const Button: FC<ButtonProps> = ({
   const classes = useMemo(() => {
     const arr: string[] = [
       'focus:outline-none focus:shadow-outline leading-tight',
-      `bg-${bgColor}-500`,
-      `hover:bg-${bgColor}-700`,
-      `text-${textColor}`,
+      bgColor,
+      `hover:${hoverBgColor}`,
+      textColor,
     ];
     if (className) arr.push(className);
     if (bold) arr.push(`font-bold`);
     if (border) arr.push('border border-gray-400 hover:border-gray-500');
 
     return arr.join(' ');
-  }, [className, bgColor, bold, textColor, border]);
+  }, [className, bgColor, hoverBgColor, bold, textColor, border]);
 
   return (
     <Box componentType="button" type="button" className={classes} onClick={onClick} px={px} py={py} {...rest}>
