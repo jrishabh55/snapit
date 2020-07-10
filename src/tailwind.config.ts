@@ -1,7 +1,10 @@
 const config = {
   purge: {
     enabled: true,
-    content: ['./src/**/*.tsx'],
+    content: ['./src/**/*.tsx', './src/tailwind/**/*.ts'],
+    options: {
+      whitelistPatterns: [/^rounded/, /^gap/],
+    },
   },
   target: 'relaxed',
   prefix: '',
@@ -732,4 +735,5 @@ const config = {
 
 export default config;
 
-module.exports = config;
+/* ts-ignore */
+// module.exports = config;
