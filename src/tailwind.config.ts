@@ -1,5 +1,8 @@
 const config = {
-  purge: [],
+  purge: {
+    enabled: true,
+    content: ['./src/**/*.tsx'],
+  },
   target: 'relaxed',
   prefix: '',
   important: false,
@@ -728,3 +731,5 @@ const config = {
 };
 
 export default config;
+
+module.exports = config;
