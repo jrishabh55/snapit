@@ -12,7 +12,7 @@ import { Box, Select, Button } from 'tailwind';
 import Header from 'components/Header';
 import { DataReducerActions } from 'reducers/data.reducer';
 
-const id = '#codeation-code-wrapper';
+const id = 'codeation-code-wrapper';
 
 const SnapIt = () => {
   const { state, dispatch } = useFetchContext('data');
@@ -38,7 +38,7 @@ const SnapIt = () => {
 
   const onSnapIt = useCallback((e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    captureDom(id);
+    captureDom(`#${id}`);
   }, []);
 
   const themeOption = useMemo(() => themes.map(($theme) => ({ name: $theme.name, value: $theme.id })), []);
@@ -59,7 +59,7 @@ const SnapIt = () => {
       <Box display="grid" gap="2" className="grid-flow-col max-w-screen-md justify-center mx-auto">
         <Select options={themeOption} value={theme} onChange={onThemeChange} />
         <Select options={modeOption} value={mode} onChange={onModeChange} />
-        <Button bgColor="bg-blue-300" textColor="text-white" shadow border rounded onClick={onSnapIt}>
+        <Button bgColor="bg-blue-500" textColor="text-white" shadow border rounded onClick={onSnapIt}>
           Snap IT
         </Button>
       </Box>
