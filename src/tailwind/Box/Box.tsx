@@ -7,10 +7,14 @@ import {
   PositionType,
   GapTypes,
   PaddingProps,
+  MarginProps,
 } from '../TailwindInterfaces';
 import { classObjToString } from '../utils';
 
-export interface BoxProps<T extends HTMLElement = HTMLElement> extends AllHTMLAttributes<T>, Partial<PaddingProps> {
+export interface BoxProps<T extends HTMLElement = HTMLElement>
+  extends AllHTMLAttributes<T>,
+    Partial<PaddingProps>,
+    Partial<MarginProps> {
   className?: string;
   display?: DisplayTypes;
   shadow?: ShadowType | boolean;
@@ -41,6 +45,13 @@ const Box: FC<BoxProps> = memo(
     pr,
     pl,
     pb,
+    m,
+    mx,
+    my,
+    mt,
+    mr,
+    ml,
+    mb,
     ...restProps
   }) => {
     const classes = useMemo(() => {
@@ -59,8 +70,37 @@ const Box: FC<BoxProps> = memo(
         pr,
         pl,
         pb,
+        m,
+        mx,
+        my,
+        mt,
+        mr,
+        ml,
+        mb,
       });
-    }, [className, display, rounded, shadow, position, border, gap, p, px, py, pt, pr, pl, pb]);
+    }, [
+      className,
+      display,
+      rounded,
+      shadow,
+      position,
+      border,
+      gap,
+      p,
+      px,
+      py,
+      pt,
+      pr,
+      pl,
+      pb,
+      m,
+      mx,
+      my,
+      mt,
+      mr,
+      ml,
+      mb,
+    ]);
 
     const BoxComponent = useMemo(() => {
       return createElement(componentType, { className: classes, ...restProps }, children);

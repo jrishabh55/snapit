@@ -20,13 +20,22 @@ export type ShadowType = keyof typeof boxShadow | boolean;
 
 export interface PaddingProps {
   p: SpacingTypes;
-  x: SpacingTypes;
   py: SpacingTypes;
   px: SpacingTypes;
   pt: SpacingTypes;
   pr: SpacingTypes;
   pb: SpacingTypes;
   pl: SpacingTypes;
+}
+
+export interface MarginProps {
+  m: SpacingTypes;
+  my: SpacingTypes;
+  mx: SpacingTypes;
+  mt: SpacingTypes;
+  mr: SpacingTypes;
+  mb: SpacingTypes;
+  ml: SpacingTypes;
 }
 
 export type DisplayTypes =
