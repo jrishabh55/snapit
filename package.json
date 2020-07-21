@@ -10,7 +10,7 @@
     "codemirror-solidity": "^0.2.2",
     "dom-to-image": "^2.6.0",
     "file-saver": "^2.0.2",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "react": "^16.13.1",
     "react-codemirror2": "^7.2.1",
     "react-color": "^2.18.1",
