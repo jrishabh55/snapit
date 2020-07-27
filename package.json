@@ -23,8 +23,7 @@
     "deploy": "gh-pages -d build",
     "predeploy": "yarn build",
     "start": "react-scripts start",
-    "build": "yarn build:tailwind && react-scripts build",
-    "prebuild:css": "yarn build:tailwind",
+    "build": "react-scripts build",
     "build:css": "tailwindcss build ./src/assets/tailwind.css -o ./src/assets/main.css",
     "build:tailwind": "tsc ./src/tailwind.config.ts && mv ./src/tailwind.config.js ./",
     "test": "react-scripts test",
@@ -32,8 +31,7 @@
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint:fix": "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\"",
-    "prewatch:css": "yarn build:tailwind",
-    "watch:css": "postcss src/assets/tailwind.css -o src/assets/main.css"
+    "watch:css": "postcss -w src/assets/tailwind.css -o src/assets/main.css"
   },
   "eslintConfig": {
     "extends": "react-app"
