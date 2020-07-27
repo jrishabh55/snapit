@@ -54,12 +54,12 @@ const SnapIt = () => {
   );
 
   return (
-    <>
+    <Box display="block" className="min-w-screen-sm">
       <Header title="SnapIT" />
-      <Box display="grid" gap="2" className="grid-flow-col max-w-screen-md justify-center mx-auto">
-        <Select options={themeOption} value={theme} onChange={onThemeChange} />
-        <Select options={modeOption} value={mode} onChange={onModeChange} />
-        <Button bgColor="bg-blue-500" textColor="text-white" shadow border rounded onClick={onSnapIt}>
+      <Box display="flex" className="max-w-screen-md justify-center mx-auto w-auto">
+        <Select options={themeOption} value={theme} containerProps={{ mx: '2' }} onChange={onThemeChange} />
+        <Select options={modeOption} value={mode} containerProps={{ mx: '2' }} onChange={onModeChange} />
+        <Button bgColor="bg-blue-500" textColor="text-white" mx="2" shadow border rounded onClick={onSnapIt}>
           Snap IT
         </Button>
       </Box>
@@ -68,7 +68,7 @@ const SnapIt = () => {
           <CodeMirror value={baseCode} className="w-full" options={state.config.codeMirror} />
         </CodeWrapper>
       </Box>
-    </>
+    </Box>
   );
 };
 
