@@ -1,6 +1,6 @@
 const config = {
   purge: {
-    enabled: true,
+    enabled: process.env.NODE_ENV === 'production',
     content: ['./src/**/*.tsx', './src/tailwind/**/*.ts'],
     options: {
       whitelistPatterns: [/^rounded/, /^gap/],
@@ -347,10 +347,11 @@ const config = {
       full: '100%',
       screen: '100vh',
     },
-    minWidth: {
+    minWidth: (theme: any, { breakpoints }: any) => ({
       '0': '0',
       full: '100%',
-    },
+      ...breakpoints(theme('screens')),
+    }),
     objectPosition: {
       bottom: 'bottom',
       center: 'center',
