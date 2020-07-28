@@ -1,7 +1,15 @@
-import React from 'react';
+/* eslint-disable no-unused-expressions */
+import React, { useEffect } from 'react';
 import { Box } from 'tailwind';
 
 const Loading = () => {
+  useEffect(() => {
+    const el = document.querySelector('body');
+    el?.classList.add('overflow-hidden');
+    return () => {
+      el?.classList.remove('overflow-hidden');
+    };
+  }, []);
   return (
     <Box
       position="absolute"
