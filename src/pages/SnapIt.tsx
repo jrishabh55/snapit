@@ -5,6 +5,8 @@ import { modes, ModeType } from 'utils/modes';
 import captureDom from 'utils/captureDom';
 import { useFetchContext } from 'utils/contexts';
 
+import { usePageAnalytics } from 'hooks';
+
 import CodeWrapper from 'components/CodeWrapper';
 import CodeMirror from 'components/CodeMirror/CodeMirror';
 
@@ -18,6 +20,8 @@ const SnapIt = () => {
   const { state, dispatch } = useFetchContext('data');
   const [theme, setTheme] = useState(state.config.codeMirror.theme as string);
   const [mode, setMode] = useState(state.config.codeMirror.mode);
+
+  usePageAnalytics();
 
   const onThemeChange = useCallback(
     (e: ChangeEvent<HTMLSelectElement>) => {
