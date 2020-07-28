@@ -22,7 +22,10 @@ const SnapIt = () => {
   const onThemeChange = useCallback(
     (e: ChangeEvent<HTMLSelectElement>) => {
       setTheme(e.currentTarget.value);
-      dispatch({ type: DataReducerActions.CODEMIRROR_THEME_UPDATE, data: { theme: e.currentTarget.value } });
+      dispatch({
+        type: DataReducerActions.CODEMIRROR_THEME_UPDATE,
+        data: { theme: e.currentTarget.value },
+      });
     },
     [dispatch]
   );
@@ -31,7 +34,10 @@ const SnapIt = () => {
     (e: ChangeEvent<HTMLSelectElement>) => {
       const { mode: currentMode } = modes.find((m) => m.id === parseInt(e.currentTarget.value, 10)) as ModeType;
       setMode(e.currentTarget.value);
-      dispatch({ type: DataReducerActions.CODEMIRROR_MODE_CHANGE, data: { mode: currentMode } });
+      dispatch({
+        type: DataReducerActions.CODEMIRROR_MODE_CHANGE,
+        data: { mode: currentMode },
+      });
     },
     [dispatch]
   );
