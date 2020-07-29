@@ -15,7 +15,9 @@ const Loading = () => {
       position="absolute"
       className="bg-blue-900 tracking-widest overflow-hidden select-none bg-opacity-75 z-50 w-screen h-screen justify-center items-center"
     >
-      <Box className="text-blue-200 font-mono uppercase">Loading();</Box>
+      <Box id="loading-text" className="text-4xl text-blue-200 font-mono uppercase">
+        Loading();
+      </Box>
     </Box>
   );
 };
