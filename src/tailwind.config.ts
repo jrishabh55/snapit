@@ -3,7 +3,7 @@ const config = {
     enabled: process.env.NODE_ENV === 'production',
     content: ['./src/**/*.tsx', './src/tailwind/**/*.ts'],
     options: {
-      whitelistPatterns: [/^rounded/, /^gap/],
+      whitelistPatterns: [/^rounded/, /^gap/, /^m[a-z]{0,1}-[0-9]{1,2}/],
     },
   },
   target: 'relaxed',
